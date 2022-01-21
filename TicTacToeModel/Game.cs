@@ -143,6 +143,28 @@ namespace TicTacToeModel
                 }
             }
 
+            // check diagonal from top left to bottom right
+            if (
+                Fields[0,0].CheckedPlayer != null &&
+                Fields[0, 0].CheckedPlayer == Fields[1, 1].CheckedPlayer &&
+                Fields[1,1].CheckedPlayer == Fields[2,2].CheckedPlayer)
+            {
+                Winner = Fields[0, 0].CheckedPlayer;
+                GameEnded = true;
+                return;
+            }
+
+            // check diagonal from bottom left to top right
+            if (
+                Fields[0, 2].CheckedPlayer != null &&
+                Fields[0, 2].CheckedPlayer == Fields[1, 1].CheckedPlayer &&
+                Fields[1, 1].CheckedPlayer == Fields[2, 0].CheckedPlayer)
+            {
+                Winner = Fields[0, 2].CheckedPlayer;
+                GameEnded = true;
+                return;
+            }
+
             // check tie
             for (int column = 0; column < Width; column++)
             {
